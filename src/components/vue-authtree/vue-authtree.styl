@@ -1,0 +1,230 @@
+lineColor = #c0c4cc;
+.yn-authtree-list{
+  display: table;
+  ul,ol{
+    list-style: none;
+  }
+  .hidden{
+    display: hidden;
+  }
+  .authtree-node{
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    &.combination.expanded{
+      display: table;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    &.combination.shrink{
+      display: table;
+    }
+  }
+  .authtree-node-content{
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 0;
+    &::before,
+    &::after{
+      position: absolute;
+      content: " ";
+    }
+  }
+  .node-content-inner{
+    position: relative;
+    &::before,
+    &::after{
+      position: absolute;
+      content: " ";
+    }
+  }
+  .authtree-node.combination{
+    &>.authtree-node-content>.node-content-inner{
+      &::after{
+        top: 50%;
+        right: -20px;
+        width: 20px;
+        height: 1px;
+        background-color: lineColor;
+      }
+    }
+  }
+  .authtree-node-btn{
+    position: absolute;
+    top: 50%;
+    right: -28px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    margin-top: -8px;
+    z-index: 10;
+    border-radius: 50%;
+    text-align: center;
+    color: lineColor;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0,0,0,0.15);
+    background-color: #fff;
+  }
+  .expand-btn{
+    display: block;
+  }
+  .shrink-btn{
+    display: none;
+  }
+  .expanded{
+    &>.authtree-node-content>.node-content-inner>.expand-btn{
+      display: none;
+    }
+    &>.authtree-node-content>.node-content-inner>.shrink-btn{
+      display: block;
+    }
+  }
+  .authtree-children{
+    display: table-cell;
+    padding-left: 20px;
+    &>.authtree-node{
+      display: table;
+      padding-left: 20px;
+      &::before,
+      &::after{
+        position: absolute;
+        content: " ";
+        top: 50%;
+        left: 0;
+        height: 50%;
+        width: 1px;
+        border-left: 1px solid lineColor;
+        background-color: #fff;
+      }
+      &::before{
+        width: 20px;
+        border-top: 1px solid lineColor;
+      }
+      &:last-child::before{
+        top: 0;
+        border-top: none;
+        border-bottom: 1px solid lineColor;
+      }
+      &:not(:first-child)::after{
+       top: 0;
+      }
+      &:only-child::before{
+        border-left: none;
+      }
+      &:only-child::after{
+        display: none;
+      }
+    }
+  }
+  .authtree-node{
+    &>.authtree-children{
+      display: none;
+    }
+    &.expanded>.authtree-children{
+      display: block;
+    }
+  }
+  /*checkbox start*/
+  .authtree-node-checkbox{
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    line-height: 1;
+    margin-bottom: 0;
+    overflow: hidden;
+    font-size: 14px;
+    /* 选中状态 */
+    &.checked{
+      .checkbox-view{
+        border-color: #409eef;
+        color: #fff;
+        background-color: #409eef;
+      }
+      .icon-xuanzhong{
+        display: block;
+      }
+      .icon-hengxian{
+        display: none;
+      }
+    }
+    /* 半选折状态 */
+    &.indeterminate{
+      .checkbox-view{
+        border-color: #409eef;
+        color: #fff;
+        background-color: #409eef;
+      }
+      .icon-xuanzhong{
+        display: none;
+      }
+      .icon-hengxian{
+        display: block;
+      }
+    }
+    /* 禁用状态 */
+    &.disabled,
+    &.disabled.checked,
+    &.disabled.indeterminate{
+      .checkbox-view{
+        border-color: #dcdfe6;
+        color: #c0c4cc;
+        cursor: not-allowed;
+        background-color: #edf2fc;
+      }
+    }
+    /* 只读状态 */
+    &.readonly,
+    &.readonly.checked,
+    &.readonly.indeterminate{
+      .checkbox-view{
+        border-color: #dcdfe6;
+        color: #c0c4cc;
+        cursor: default;
+        background-color: #edf2fc;
+      }
+    }
+  }
+  .checkbox-view{
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    line-height: 10px;
+    border: 1px solid #dcdfe6;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #fff;
+    transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46), background-color .25s cubic-bezier(.71,-.46,.29,1.46);
+    &:hover{
+      border-color: #409eff;
+    }
+    .iconfont{
+      display: none;
+      line-height: 1;
+      font-size: 12px;
+    }
+  }
+  .checkbox-label-text{
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    margin-left: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #606266;
+    cursor: pointer;
+  }
+  .checkbox_original{
+    position: absolute;
+    left: -100px;
+    top: -10px;
+  }
+  /*checkbox end*/
+}
