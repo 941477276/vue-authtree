@@ -8,6 +8,8 @@ vue-authtree是一款基于vue实现的权限树插件，它与一般的权限�
 全部选中：
 
  ![全部选中](./img/img2.png)
+# demo
+[demo](https://941477276.github.io/vue-authtree/dist/index.html)
 # 使用
 将src/components/vue-authtree组件拷贝至自己的项目中即可！(￣^￣゜)
 # 组件props
